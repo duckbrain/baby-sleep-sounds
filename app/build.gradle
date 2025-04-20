@@ -1,15 +1,15 @@
 // https://docs.gradle.org/current/userguide/upgrading_version_5.html#the_findbugs_plugin_has_been_removedhttps://docs.gradle.org/current/userguide/upgrading_version_5.html#the_findbugs_plugin_has_been_removed
 plugins {
-    id "com.github.spotbugs" version "4.5.1"
     id "com.android.application"
 }
 
 android {
-    compileSdkVersion 29
+    namespace "protect.babysleepsounds"
+    compileSdkVersion 33
     defaultConfig {
         applicationId "protect.babysleepsounds"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode 15
         versionName "0.11"
     }
@@ -42,20 +42,3 @@ dependencies {
     implementation 'protect:android-ffmpeg:release@aar'
 }
 
-spotbugs {
-    effort = 'max'
-    reportLevel = 'high'
-    ignoreFailures = false
-
-    excludeFilter = file("./config/findbugs/exclude.xml")
-}
-
-project.tasks.withType(com.github.spotbugs.snom.SpotBugsTask) {
-    group 'Verification'
-    description 'Run Spotbugs on this project.'
-
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
