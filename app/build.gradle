@@ -8,7 +8,7 @@ android {
     compileSdkVersion 33
     defaultConfig {
         applicationId "protect.babysleepsounds"
-        minSdkVersion 16
+        minSdkVersion 24
         targetSdkVersion 33
         versionCode 15
         versionName "0.11"
@@ -23,9 +23,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions {
-        disable "GoogleAppIndexingWarning"
-        disable "MissingTranslation"
+    lint {
+        disable 'GoogleAppIndexingWarning', 'MissingTranslation'
     }
 }
 
@@ -39,6 +38,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.google.guava:guava:18.0'
-    implementation 'protect:android-ffmpeg:release@aar'
+    implementation group: 'io.github.maitrungduc1410', name: 'ffmpeg-kit-min', version: '6.0.0'
 }
 
